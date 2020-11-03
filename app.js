@@ -19,7 +19,16 @@ app.get('/shop', function (req, res) {
      if (err) throw err;
      return res.json(result)
    });
+})
+
+
+app.get('/shop/:id/products', function (req, res) {
+  con.query(`SELECT * FROM products where store_id =${req.params.id}`, function (err, result, fields) {
+     if (err) throw err;
+     return res.json(result)
+   });
 })   
+
 
 
 app.get('/', (req, res) => {
